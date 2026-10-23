@@ -1,0 +1,9 @@
+---
+- name: Mi primer Hola Mundo con Ansible
+  hosts: cluster_servidores
+  gather_facts: no
+
+  tasks:
+    - name: Mostrar mensaje de prueba
+      debug:
+        msg: "¡Hola Mundo desde Ansible Semaphore ejecutado por Git!"

@@ -1,0 +1,17 @@
+---
+- name: Desplegar archivo X en múltiples servidores Docker
+  hosts: cluster_servidores
+  gather_facts: no
+
+  tasks:
+    - name: Asegurar que el directorio de destino exista en el servidor remoto
+      file:
+        path: /opt/app
+        state: directory
+        mode: '0755'
+
+    - name: Copiar el archivo X al servidor remoto
+      copy:
+        src: archivo_compartido.txt
+        dest: /opt/app/archivo_X.txt
+        mode: '0644'
