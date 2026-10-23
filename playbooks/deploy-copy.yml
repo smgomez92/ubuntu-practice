@@ -1,7 +1,7 @@
 ---
 - name: Desplegar archivo X en múltiples servidores Docker
   hosts: cluster_servidores
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
     - name: Asegurar que el directorio de destino exista en el servidor remoto
@@ -10,7 +10,7 @@
         state: directory
         mode: '0755'
 
-   - name: Crear un archivo de bienvenida personalizado
+    - name: Crear un archivo de bienvenida personalizado
       copy:
         dest: /opt/app/info.txt
         content: |
@@ -18,4 +18,3 @@
           Este archivo fue creado automáticamente usando Ansible.
           Fecha de despliegue: {{ ansible_date_time.date }}
         mode: '0644'
-
